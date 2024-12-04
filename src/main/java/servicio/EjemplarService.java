@@ -33,8 +33,10 @@ public class EjemplarService {
             throw new IllegalArgumentException("ISBN no válido");
         if (!Validator.isEstadoValid(estado))
             throw new IllegalArgumentException("Estado del ejemplar no válido");
+        if (estado.equalsIgnoreCase("Prestado"))
+            throw new IllegalArgumentException("No se puede registrar un ejemplar como prestado.");
 
-        // Obtener registro del libro
+        // Obtener registro del libro y validar que el libro exista
         Libro libroRef = libroService.read(isbn13);
         if (libroRef == null)
             throw new IllegalArgumentException("No se ha encontrado el libro para el que quiere registrar un ejemplar. Debe registrar el libro primero.");
@@ -56,15 +58,8 @@ public class EjemplarService {
         ejemplarDAO.update(ejemplarRef);
     }
 
-    // Obtener número de ejemplares disponibles para un libro
-    public int getStockLibro(Libro libro) {
-        return (int) ejemplares.stream()
-               .filter(e -> e.getIsbn().equals(libro) && e.getEstado().equalsIgnoreCase("Disponible"))
-               .count();
-    }
-
     // Obtener número de ejemplares disponibles en total
-    public int getStockTotal() {
+    public int getStockTotalEjemplares() {
         return (int) ejemplares.stream()
                .filter(e -> e.getEstado().equalsIgnoreCase("Disponible"))
                .count();

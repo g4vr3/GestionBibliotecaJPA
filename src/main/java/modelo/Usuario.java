@@ -112,4 +112,24 @@ public class Usuario {
         this.prestamos = prestamos;
     }
 
+    // Método para obtener el número de préstamos activos del usuario
+    public int getNumeroPrestamosActivos() {
+        return (int) this.getPrestamos().stream() // Obtiene préstamos del usuario
+                .filter(prestamo -> prestamo.getFechaDevolucion() == null) // Filtra los que no han sido devueltos
+                .count(); // los cuenta
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", penalizacionHasta=" + penalizacionHasta +
+                ", prestamos=" + prestamos +
+                '}';
+    }
 }

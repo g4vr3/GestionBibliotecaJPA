@@ -18,8 +18,15 @@ public class UsuarioService {
     public Usuario registrar(String dni, String nombre, String email, String password, String tipo) {
 
         // Validación de campos requeridos
-        if (Validator.isNotFilled(dni, nombre, email, password, tipo))
-            throw new IllegalArgumentException("Todos los campos son obligatorios");
+        if (Validator.isNotFilled(dni, nombre, email, password))
+            throw new IllegalArgumentException("Los campos DNI, nombre, email y contraseña son obligatorios");
+
+        // Usuario de tipo común si no se especifica
+        // Pensado para que un usuario común no vea la opción de registrarse como administrador
+        // Los administradores se registraran desde el programa y se le aportarán las credenciales de acceso
+        // Posible implementación de un panel master para registrar usuarios administradores
+        if (Validator.isNotFilled(tipo))
+            tipo = "usuario";
 
         // Validación de duplicidad de dni o nombre
         Usuario usuarioExistente = readByEmail(email);

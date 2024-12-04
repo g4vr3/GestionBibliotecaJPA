@@ -69,4 +69,13 @@ public class Ejemplar {
         this.prestamos = prestamos;
     }
 
+    @Override
+    public String toString() {
+        return "Ejemplar{" +
+                "id=" + id +
+                ", isbn=" + isbn +
+                ", estado='" + estado + '\'' +
+                ", prestamos=" + prestamos +
+                '}';
+    }
 }

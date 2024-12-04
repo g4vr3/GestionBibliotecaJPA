@@ -1,5 +1,6 @@
 package servicio;
 
+import modelo.Ejemplar;
 import modelo.Libro;
 import repositorio.GenericDAO;
 import util.Validator;
@@ -41,6 +42,18 @@ public class LibroService {
                 .filter(libro -> libro.getIsbn().equals(isbn13))
                 .findFirst()
                 .orElse(null);
+    }
+
+    // Obtener stock de un libro
+    public int getStockLibroByIsbn(String isbn13) {
+        Libro libroRef = read(isbn13); // Obtener libro por ISBN13
+        return getStockLibro(libroRef);
+    }
+
+    public int getStockLibro(Libro libroRef) {
+        return (int) libroRef.getEjemplares().stream()  // Obtener ejemplares del libro
+                .filter(ejemplar -> ejemplar.getEstado().equalsIgnoreCase("Disponible")) // Filtrar ejemplares disponibles
+                .count();
     }
 
     public List<Libro> getLibros() {

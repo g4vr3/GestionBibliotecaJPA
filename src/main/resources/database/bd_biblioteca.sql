@@ -39,7 +39,7 @@ CREATE TABLE Prestamo (
 INSERT INTO Usuario (dni, nombre, email, password, tipo) VALUES 
 ('12345678A', 'Juan Pérez', 'juan.perez@example.com', 'password123', 'normal'),
 ('87654321B', 'Ana García', 'ana.garcia@example.com', 'password123', 'normal'),
-('11223344C', 'Luis López', 'luis.lopez@example.com', 'adminpass123', 'administrador');
+('admin', 'admin', 'admin@gmail.com', 'admin', 'administrador');
 
 -- Libros
 INSERT INTO Libro (isbn, titulo, autor) VALUES 
