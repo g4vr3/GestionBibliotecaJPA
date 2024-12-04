@@ -35,6 +35,19 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private Set<Prestamo> prestamos = new LinkedHashSet<>();
 
+    public Usuario(String dni, String nombre, String email, String password, String tipo) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.email = email;
+        this.password = password;
+        this.tipo = tipo;
+        this.penalizacionHasta = null; // No hay penalización inicial
+    }
+
+    public Usuario() {
+
+    }
+
     public Integer getId() {
         return id;
     }

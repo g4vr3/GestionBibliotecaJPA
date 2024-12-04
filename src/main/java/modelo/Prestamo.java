@@ -29,6 +29,17 @@ public class Prestamo {
     @Column(name = "fechaDevolucion")
     private LocalDate fechaDevolucion;
 
+    public Prestamo(Usuario usuario, Ejemplar ejemplar, LocalDate fechaInicio, LocalDate fechaDevolucion) {
+        this.usuario = usuario;
+        this.ejemplar = ejemplar;
+        this.fechaInicio = fechaInicio;
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public Prestamo() {
+
+    }
+
     public Integer getId() {
         return id;
     }

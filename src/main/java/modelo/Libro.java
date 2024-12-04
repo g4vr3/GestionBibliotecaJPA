@@ -16,6 +16,16 @@ public class Libro {
     @Column(name = "autor", nullable = false, length = 100)
     private String autor;
 
+    public Libro(String isbn, String titulo, String autor) {
+        this.isbn = isbn;
+        this.titulo = titulo;
+        this.autor = autor;
+    }
+
+    public Libro() {
+
+    }
+
     public String getIsbn() {
         return isbn;
     }

@@ -28,6 +28,15 @@ public class Ejemplar {
     @OneToMany(mappedBy = "ejemplar")
     private Set<modelo.Prestamo> prestamos = new LinkedHashSet<>();
 
+    public Ejemplar(Libro libro, String estado) {
+        this.isbn = libro;
+        this.estado = estado;
+    }
+
+    public Ejemplar() {
+
+    }
+
     public Integer getId() {
         return id;
     }
