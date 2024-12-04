@@ -77,7 +77,7 @@ public class PrestamoService {
 
         // Actualizar fecha de devolución en el préstamo
         prestamoToDevolver.setFechaDevolucion(LocalDate.now());
-        prestamoDAO.update(prestamoToDevolver); // Actualizar en DB
+        update(prestamoToDevolver); // Actualizar en DB
 
         // Verificar que se haya devuelto en plazo
         if (!Validator.isPrestamoDevueltoEnPlazo(prestamoToDevolver)) {
@@ -93,5 +93,14 @@ public class PrestamoService {
                 .filter(prestamo -> prestamo.getId().equals(idPrestamo))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public void update(Prestamo prestamo) {
+        prestamoDAO.update(prestamo); // Actualizar en DB
+    }
+
+
+    public List<Prestamo> getPrestamos() {
+        return prestamos;
     }
 }

@@ -26,7 +26,7 @@ public class UsuarioService {
         // Los administradores se registraran desde el programa y se le aportarán las credenciales de acceso
         // Posible implementación de un panel master para registrar usuarios administradores
         if (Validator.isNotFilled(tipo))
-            tipo = "usuario";
+            tipo = "normal";
 
         // Validación de duplicidad de dni o nombre
         Usuario usuarioExistente = readByEmail(email);

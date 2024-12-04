@@ -160,8 +160,6 @@ public class Validator {
 
     public static boolean isPrestamoDevueltoEnPlazo(Prestamo prestamoToDevolver) {
         LocalDate fechaDevolucionMaxima = prestamoToDevolver.getFechaInicio().plusDays(15); // Fecha máxima de devolución
-        if (!isPrestamoDevuelto(prestamoToDevolver)) // Valida si el préstamo ha sido devuelto
-                throw new IllegalArgumentException("El préstamo no ha sido devuelto");
         // Retorna true si la fecha de devolución es antes de la fecha máxima,
         // false en caso contrario
         return prestamoToDevolver.getFechaDevolucion().isBefore(fechaDevolucionMaxima);

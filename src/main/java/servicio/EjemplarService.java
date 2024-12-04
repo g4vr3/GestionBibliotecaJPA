@@ -44,6 +44,7 @@ public class EjemplarService {
         Ejemplar ejemplarToCreate = new Ejemplar(libroRef, estado);
         ejemplarDAO.create(ejemplarToCreate); // Crear en DB
         ejemplares.add(ejemplarToCreate); // Añadir a la lista de memoria
+        libroRef.getEjemplares().add(ejemplarToCreate); // Añadir el ejemplar al libro
     }
 
     // Retornar ejemplar por ID

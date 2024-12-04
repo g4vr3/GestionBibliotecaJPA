@@ -5,7 +5,7 @@
              version="3.0">
     <persistence-unit name="biblioteca">
         <properties>
-            <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/bd_biblioteca"/>
+            <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/biblioteca"/>
             <property name="hibernate.connection.driver_class" value="org.mariadb.jdbc.Driver"/>
             <property name="hibernate.connection.username" value="test"/>
             <property name="hibernate.connection.password" value="dbtester"/>

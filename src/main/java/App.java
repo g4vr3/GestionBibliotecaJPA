@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Admin user: admin
+        // Admin email: admin@gmail.com
         // Admin password: admin
 
         ConsoleMenu.initStartMenu(sc);

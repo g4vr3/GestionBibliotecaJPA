@@ -126,6 +126,7 @@ public class ConsoleMenu {
             System.out.println("3 - Crear prestamo");
             System.out.println("4 - Devolver prestamo");
             System.out.println("5 - Listar libros y stock");
+            System.out.println("6 - Listar préstamos");
             System.out.println("0 - Salir");
             System.out.println("--------------------------------");
 
@@ -146,7 +147,10 @@ public class ConsoleMenu {
                     devolverPrestamo(sc);
                     break;
                 case 5:
-                    listarLibrosYStock(sc);
+                    listarLibrosYStock();
+                    break;
+                case 6:
+                    listarPrestamos();
                     break;
                 case 0:
                     System.out.println("Saliendo...");
@@ -157,7 +161,16 @@ public class ConsoleMenu {
         } while (option != 0);
     }
 
-    private static void listarLibrosYStock(Scanner sc) {
+    private static void listarPrestamos() {
+        List<Prestamo> prestamos = prestamoService.getPrestamos();
+        System.out.println("--------------------------------");
+        System.out.println("Listado de Prestamos");
+        System.out.println("--------------------------------");
+
+        prestamos.forEach(System.out::println);
+    }
+
+    private static void listarLibrosYStock() {
         List<Libro> libros = libroService.getLibros();
         System.out.println("--------------------------------");
         System.out.println("Listado de Libros y Stock");
@@ -262,7 +275,7 @@ public class ConsoleMenu {
 
     private static void showPrestamosUsuario(Scanner sc, Usuario usuarioActivo) {
         System.out.println("--------------------------------");
-        System.out.printf("Hola %s, tienes %d prestamos activos:", usuarioActivo.getNombre(), usuarioActivo.getNumeroPrestamosActivos());
+        System.out.printf("Hola %s, tienes %d prestamos activos:\n", usuarioActivo.getNombre(), usuarioActivo.getNumeroPrestamosActivos());
         System.out.println("--------------------------------");
         usuarioActivo.getPrestamos().forEach(System.out::println);
     }

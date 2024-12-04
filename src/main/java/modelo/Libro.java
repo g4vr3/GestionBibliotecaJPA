@@ -70,8 +70,6 @@ public class Libro {
         return "Libro{" +
                 "isbn='" + isbn + '\'' +
                 ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", ejemplares=" + ejemplares +
-                '}';
+                ", autor='" + autor +  '}';
     }
 }

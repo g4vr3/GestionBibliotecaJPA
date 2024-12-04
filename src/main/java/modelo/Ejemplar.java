@@ -75,7 +75,6 @@ public class Ejemplar {
                 "id=" + id +
                 ", isbn=" + isbn +
                 ", estado='" + estado + '\'' +
-                ", prestamos=" + prestamos +
                 '}';
     }
 }
