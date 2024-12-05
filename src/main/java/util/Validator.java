@@ -148,7 +148,7 @@ public class Validator {
     public static boolean hasUsuarioLimitePrestamosActivos(Usuario usuarioRef) {
         // Retorna true si el usuario tiene más de 3 préstamos activos,
         // false en caso contrario
-        return usuarioRef.getNumeroPrestamosActivos() > 3;
+        return usuarioRef.getNumeroPrestamosActivos() >= 3;
     }
 
     // Validaciones del préstamo para la devolución

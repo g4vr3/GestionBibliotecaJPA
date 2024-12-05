@@ -270,12 +270,28 @@ public class ConsoleMenu {
     }
 
     private static void initUserMenu(Scanner sc, Usuario usuarioActivo) {
+        int option;
         showPrestamosUsuario(sc, usuarioActivo);
+        do {
+            System.out.println("0 - Salir");
+            try {
+                option = sc.nextInt();
+                sc.nextLine(); // Limpiar buffer
+                if (option != 0) {
+                    System.out.println("ERROR. Opción no válida.");  // Mensaje de error si no es 0
+                }
+            } catch (Exception e) {
+                System.out.println("ERROR. Opción no válida.");  // Manejo de excepciones para entradas no numéricas
+                sc.nextLine(); // Limpiar buffer en caso de error
+                option = -1;  // Restablecer opción para continuar el bucle
+            }
+        } while (option != 0);
     }
+
 
     private static void showPrestamosUsuario(Scanner sc, Usuario usuarioActivo) {
         System.out.println("--------------------------------");
-        System.out.printf("Hola %s, tienes %d prestamos activos:\n", usuarioActivo.getNombre(), usuarioActivo.getNumeroPrestamosActivos());
+        System.out.printf("Hola %s, tienes %d prestamos activos.\n", usuarioActivo.getNombre(), usuarioActivo.getNumeroPrestamosActivos());
         System.out.println("--------------------------------");
         usuarioActivo.getPrestamos().forEach(System.out::println);
     }

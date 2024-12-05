@@ -4,6 +4,7 @@ import modelo.Usuario;
 import repositorio.GenericDAO;
 import util.Validator;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UsuarioService {
@@ -97,6 +98,11 @@ public class UsuarioService {
     }
 
     public void penalizarUsuario(Usuario usuario) {
-        usuario.setPenalizacionHasta(usuario.getPenalizacionHasta().plusDays(15));  // Añade 15 días a la penalización
+        if (usuario.getPenalizacionHasta() == null)
+            usuario.setPenalizacionHasta(LocalDate.now().plusDays(15));  // Inicia la penalización con 15 días
+        else
+            usuario.setPenalizacionHasta(usuario.getPenalizacionHasta().plusDays(15));  // Añade 15 días a la penalización
+
+        usuarioDAO.update(usuario); // Actualizar en DB
     }
 }

@@ -1,3 +1,4 @@
+DROP DATABASE biblioteca;
 CREATE DATABASE biblioteca;
 USE biblioteca;
 -- Crear tablas
@@ -37,23 +38,23 @@ CREATE TABLE Prestamo (
 -- Insertar datos de prueba
 -- Usuarios
 INSERT INTO Usuario (dni, nombre, email, password, tipo) VALUES 
-('12345678A', 'Juan Pérez', 'juan.perez@example.com', 'password123', 'normal'),
-('87654321B', 'Ana García', 'ana.garcia@example.com', 'password123', 'normal'),
+('12345678A', 'Juan Pérez', 'juan.perez@gmail.com', 'password123', 'normal'),
+('87654321B', 'Ana García', 'ana.garcia@gmail.com', 'password123', 'normal'),
 ('admin', 'admin', 'admin@gmail.com', 'admin', 'administrador');
 
 -- Libros
 INSERT INTO Libro (isbn, titulo, autor) VALUES 
 ('9781234567890', 'El Quijote', 'Miguel de Cervantes'),
 ('9789876543210', 'Cien Años de Soledad', 'Gabriel García Márquez'),
-('9781111111111', '1984', 'George Orwell');
+('9781234567897', '1984', 'George Orwell');
 
 -- Ejemplares
 INSERT INTO Ejemplar (isbn, estado) VALUES 
 ('9781234567890', 'Disponible'), ('9781234567890', 'Disponible'), ('9781234567890', 'Prestado'), -- Ejemplares de "El Quijote"
 ('9789876543210', 'Disponible'), ('9789876543210', 'Dañado'), -- Ejemplares de "Cien Años de Soledad"
-('9781111111111', 'Disponible'), ('9781111111111', 'Disponible'); -- Ejemplares de "1984"
+('9781234567897', 'Disponible'), ('9781234567897', 'Disponible'); -- Ejemplares de "1984"
 
 -- Préstamos
 INSERT INTO Prestamo (usuario_id, ejemplar_id, fechaInicio, fechaDevolucion) VALUES 
-(1, 3, '2024-11-01', NULL), -- Juan Pérez tiene un ejemplar prestado de "El Quijote"
+(1, 3, '2024-10-01', NULL), -- Juan Pérez tiene un ejemplar prestado de "El Quijote"
 (2, 4, '2024-11-05', '2024-11-20'); -- Ana García devolvió un ejemplar de "Cien Años de Soledad"
